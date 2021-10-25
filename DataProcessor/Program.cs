@@ -15,6 +15,7 @@ namespace DataProcessor
 
             Console.WriteLine(String.Format("Average total calls: {0}", dataReader.AverageTotalCalls));
             Console.WriteLine(String.Format("Number of rows: {0}", dataReader.NumberOfForces));
+
             Console.WriteLine("Press enter key to exit");
             Console.ReadLine();
         }
@@ -26,6 +27,7 @@ namespace DataProcessor
 
         public int AverageTotalCalls { get; set; }
         public int NumberOfForces { get; set; }
+        
 
         public void ReadData()
         {
@@ -47,10 +49,33 @@ namespace DataProcessor
                     {
                         continue;
                     }
-                    
+                    PrintEachForceCalls(columns);
                 }
                 AverageTotalCalls = totalCalls / NumberOfForces;
             }
+        }
+
+        
+
+        public void PrintEachForceCalls(string[] data)
+        {
+            // 12 columns per month
+            int totalCalls = 0;
+            for(int i = 1; i < 12; i++)
+            {
+                try
+                {
+                    totalCalls = +int.Parse(data[i]);
+                }
+                catch
+                {
+
+                }
+                
+            }
+            Console.WriteLine("Force: " + data[0]);
+            Console.WriteLine("Total calls: " + totalCalls);
+            Console.WriteLine();
         }
     }
         
