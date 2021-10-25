@@ -118,7 +118,7 @@ namespace DataProcessor
             {
                 try
                 {
-                    totalCalls =+ int.Parse(data[i]);
+                    totalCalls = totalCalls + int.Parse(data[i]);
                 }
                 catch
                 {
